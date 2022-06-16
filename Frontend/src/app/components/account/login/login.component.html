@@ -1,0 +1,39 @@
+<div class="main">
+  <mat-card>
+    <h2><b>Login</b></h2>
+    <hr />
+    <form [formGroup]="loginForm" class="example-form" (ngSubmit)="login()">
+      <mat-form-field class="example-full-width">
+        <mat-label>UserName</mat-label>
+        <input type="text" matInput formControlName="username" />
+      </mat-form-field>
+      <ng-container
+        *ngIf="
+          loginForm.controls['username'].value == '' &&
+          loginForm.controls['username'].touched
+        "
+      >
+        <span class="error">Username is required</span>
+      </ng-container>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" />
+      </mat-form-field>
+      <ng-container
+        *ngIf="
+          loginForm.controls['password'].value == '' &&
+          loginForm.controls['password'].touched
+        "
+      >
+        <span class="error">Password is required</span>
+      </ng-container>
+
+      <div>
+        <button class="btn btn-primary" [disabled]="!loginForm.valid">
+          Login
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

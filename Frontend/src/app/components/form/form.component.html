@@ -1,0 +1,80 @@
+<div class="main">
+  <mat-card>
+    <form [formGroup]="empForm" class="example-form" (ngSubmit)="submit()">
+      <mat-form-field class="example-full-width">
+        <mat-label>FirstName</mat-label>
+        <input type="text" matInput formControlName="firstName" />
+      </mat-form-field>
+      <ng-container
+        *ngIf="
+          empForm.controls['firstName'].value == '' &&
+          empForm.controls['firstName'].touched
+        "
+      >
+        <span class="error">FirstName is required </span>
+      </ng-container>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>LastName</mat-label>
+        <input type="text" matInput formControlName="lastName" />
+      </mat-form-field>
+      <ng-container
+        *ngIf="
+          empForm.controls['lastName'].value == '' &&
+          empForm.controls['lastName'].touched
+        "
+      >
+        <span class="error">LastName is required </span>
+      </ng-container>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Experience</mat-label>
+        <input type="text" matInput formControlName="experience" />
+      </mat-form-field>
+      <ng-container
+        *ngIf="
+          empForm.controls['experience'].value == '' &&
+          empForm.controls['experience'].touched
+        "
+      >
+        <span class="error">Experience is required </span>
+      </ng-container>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Address</mat-label>
+        <input type="text" matInput formControlName="address" />
+      </mat-form-field>
+      <ng-container
+        *ngIf="
+          empForm.controls['address'].value == '' &&
+          empForm.controls['address'].touched
+        "
+      >
+        <span class="error">Address is required </span>
+      </ng-container>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dob" />
+
+        <mat-datepicker-toggle matSuffix [for]="picker">
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <ng-container
+        *ngIf="
+          empForm.controls['dob'].value == '' && empForm.controls['dob'].touched
+        "
+      >
+        <span class="error">Date of Birth is required </span>
+      </ng-container>
+      <div>
+        <button class="btn btn-primary" [disabled]="!empForm.valid">
+          {{ queryParameter > 0 ? "Update" : "Submit" }}
+        </button>
+      </div>
+    </form>
+  </mat-card>
+
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+</div>

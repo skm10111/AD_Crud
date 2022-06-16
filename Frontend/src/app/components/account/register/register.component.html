@@ -1,0 +1,70 @@
+<div class="main">
+  <mat-card>
+    <h2><b>Register</b></h2>
+    <hr />
+    <form
+      [formGroup]="resisterForm"
+      class="example-form"
+      (ngSubmit)="register()"
+    >
+      <!-- ---username-- -->
+      <mat-form-field class="example-full-width">
+        <mat-label>UserName</mat-label>
+        <input type="text" matInput formControlName="username" />
+      </mat-form-field>
+      <ng-container
+        *ngIf="
+          resisterForm.controls['username'].value == '' &&
+          resisterForm.controls['username'].touched
+        "
+      >
+        <span class="error">Username is required</span>
+      </ng-container>
+      <!-- ---phoneNumber--- -->
+      <mat-form-field class="example-full-width">
+        <mat-label>PhoneNumber</mat-label>
+        <input type="text" matInput formControlName="phoneNumber" />
+      </mat-form-field>
+      <ng-container
+        *ngIf="
+          resisterForm.controls['phoneNumber'].value == '' &&
+          resisterForm.controls['phoneNumber'].touched
+        "
+      >
+        <span class="error">Phone Number is required</span>
+      </ng-container>
+      <!-- ---Email--- -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="text" matInput formControlName="email" />
+      </mat-form-field>
+      <ng-container
+        *ngIf="
+          resisterForm.controls['email'].value == '' &&
+          resisterForm.controls['email'].touched
+        "
+      >
+        <span class="error">Email is required</span>
+      </ng-container>
+      <!-- ---Password--- -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" />
+      </mat-form-field>
+      <ng-container
+        *ngIf="
+          resisterForm.controls['password'].value == '' &&
+          resisterForm.controls['password'].touched
+        "
+      >
+        <span class="error">Password is required</span>
+      </ng-container>
+
+      <div>
+        <button class="btn btn-primary" [disabled]="!resisterForm.valid">
+          Register
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

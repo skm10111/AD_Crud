@@ -1,0 +1,13 @@
+button:first-child {
+  margin-right: 8%;
+}
+button {
+  width: 45%;
+}
+label {
+  margin-bottom: 10%;
+}
+mat-icon {
+  cursor: pointer;
+  float: right;
+}

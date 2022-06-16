@@ -1,0 +1,22 @@
+.example-form {
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+button {
+  width: 100%;
+  border-radius: 20px;
+  margin-top: 3%;
+}
+.main {
+  width: 40%;
+  margin: 10% 0% 0 29%;
+}
+span {
+  color: red;
+}
+mat-spinner {
+  margin: -54% 38% 0%;
+}
