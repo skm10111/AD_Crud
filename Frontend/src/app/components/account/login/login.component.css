@@ -14,7 +14,12 @@
 button {
   width: 100%;
   border-radius: 3%;
+  margin-top: 3%;
 }
 h2 {
   margin-left: 44%;
+}
+mat-icon:nth-child(1) {
+  float: right;
+  cursor: pointer;
 }

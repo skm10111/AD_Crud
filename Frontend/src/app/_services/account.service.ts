@@ -11,10 +11,10 @@ export class AccountService {
   baseUrl = environment.apiUrl;
   private currentUserSource = new ReplaySubject<User>(1);
   currentUser$ = this.currentUserSource.asObservable();
-  constructor(private http: HttpClient) {}
+  constructor(private _http: HttpClient) {}
 
   login(model: any) {
-    return this.http.post(this.baseUrl + 'account/login', model).pipe(
+    return this._http.post(this.baseUrl + 'account/login', model).pipe(
       map((response) => {
         const user = response;
         if (user) {
@@ -26,7 +26,7 @@ export class AccountService {
   }
 
   register(model: any) {
-    return this.http.post(this.baseUrl + 'account/register', model);
+    return this._http.post(this.baseUrl + 'account/register', model);
   }
 
   setCurrentUser(user: any) {

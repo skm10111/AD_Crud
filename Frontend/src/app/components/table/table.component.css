@@ -1,6 +1,13 @@
-table {
+/* table {
   margin: auto;
   width: 75%;
   padding: 10px;
   margin-top: 1%;
+} */
+.mat-elevation-z8 {
+  width: 80%;
+  margin-left: 10%;
+}
+table {
+  width: 100%;
 }

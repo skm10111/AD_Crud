@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Data, Router } from '@angular/router';
 import { DataService } from 'src/app/_services/data.service';
 
@@ -10,12 +11,12 @@ import { DataService } from 'src/app/_services/data.service';
 })
 export class FormComponent implements OnInit {
   empForm!: FormGroup;
-  queryParameter: any;
-  isLoading: boolean = false;
+  queryParameter!: number;
   constructor(
     private _dataService: DataService,
     private _route: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _snack: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -38,14 +39,54 @@ export class FormComponent implements OnInit {
     });
   }
   submit() {
-    this.isLoading = true;
+    this.empForm.value.experience = String(this.empForm.value.experience);
     if (this.queryParameter > 0) {
-      this._dataService.updateData(this.empForm.value);
+      this.updateData();
     } else {
-      this._dataService.addData(this.empForm.value);
+      this.saveData();
     }
-    this.isLoading = false;
-    this._router.navigate(['/table']);
+  }
+  updateData() {
+    this._dataService.updateData(this.empForm.value).subscribe(
+      () => {
+        this._snack.open('Data Update', '', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['mat-toolbar', 'mat-primary'],
+        });
+        this._router.navigate(['/table']);
+      },
+      (error) => {
+        this._snack.open(error.error, '', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['mat-toolbar', 'mat-warn'],
+        });
+      }
+    );
+  }
+  saveData() {
+    this._dataService.addData(this.empForm.value).subscribe(
+      () => {
+        this._snack.open('Data Added', '', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['mat-toolbar', 'mat-primary'],
+        });
+        this._router.navigate(['/table']);
+      },
+      (error) => {
+        this._snack.open(error.error, '', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['mat-toolbar', 'mat-warn'],
+        });
+      }
+    );
   }
   editData(int: number) {
     this._dataService.getEmpDetail(int).subscribe((response: Data) => {

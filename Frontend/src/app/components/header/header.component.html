@@ -14,13 +14,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Demo</a>
+      <a class="navbar-brand">Demo</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a routerLink="" routerLinkActive="active">Home</a></li>
+        <li><a routerLink="">Home</a></li>
         <li *ngIf="accountService.currentUser$ | async">
           <a routerLink="/form" routerLinkActive="active">Form</a>
         </li>
@@ -37,7 +37,7 @@
           <a routerLink="register">SignUp</a>
         </li>
         <li *ngIf="accountService.currentUser$ | async">
-          <a (click)="logout()">Logout</a>
+          <a (click)="logout()"><mat-icon>power_settings_new</mat-icon></a>
         </li>
       </ul>
     </div>

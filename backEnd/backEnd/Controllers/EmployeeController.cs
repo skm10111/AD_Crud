@@ -24,7 +24,7 @@ namespace backEnd.Controllers
         public async Task<ActionResult> AddEmployee(AddEmployeeDTO employeeDTO)
         {
             var emp = await _context.EmployeeData.Where(x => x.FirstName == employeeDTO.FirstName).FirstOrDefaultAsync();
-            if (emp != null) return BadRequest("Invalid Account");
+            if (emp != null) return BadRequest("Account already exists");
             EmployeeData employee = new EmployeeData
             {
                 FirstName = employeeDTO.FirstName,

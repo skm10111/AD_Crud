@@ -17,6 +17,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtTokenInterceptor } from './_intercepter/jwt-token.interceptor';
 import { ConfirmationComponent } from './components/table/confirmation/confirmation.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LoadingInterceptor } from './_intercepter/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { HeaderComponent } from './components/header/header.component';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtTokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

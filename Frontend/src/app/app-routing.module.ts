@@ -16,7 +16,10 @@ const routes: Routes = [
     children: [
       {
         path: 'table',
-        component: TableComponent,
+        loadChildren: () =>
+          import('./components/table/table.component').then(
+            (m) => m.TableComponent
+          ),
       },
       { path: 'form', component: FormComponent },
       { path: 'form/:id', component: FormComponent },

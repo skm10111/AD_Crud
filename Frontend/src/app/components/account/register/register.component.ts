@@ -13,7 +13,7 @@ import { AccountService } from 'src/app/_services/account.service';
 export class RegisterComponent implements OnInit {
   resisterForm!: FormGroup;
   constructor(
-    private accountService: AccountService,
+    private _accountService: AccountService,
     private _snack: MatSnackBar,
     private _router: Router
   ) {}
@@ -31,26 +31,32 @@ export class RegisterComponent implements OnInit {
     });
   }
   register() {
-    this.accountService.register(this.resisterForm.value).subscribe(
+    this._accountService.register(this.resisterForm.value).subscribe(
       () => {
         this.loginUser({
           username: this.resisterForm.controls['username'].value,
           password: this.resisterForm.controls['password'].value,
         });
-        this._snack.open('Success Registration', 'OK', {
+        this._snack.open('Success Registration', '', {
           duration: 3000,
+          verticalPosition: 'top',
+          horizontalPosition: 'right',
+          panelClass: ['mat-toolbar', 'mat-primary'],
         });
       },
       (error) => {
-        this._snack.open(error.error, 'OK', {
+        this._snack.open(error.error, '', {
           duration: 2000,
+          verticalPosition: 'top',
+          horizontalPosition: 'right',
+          panelClass: ['mat-toolbar', 'mat-warn'],
         });
       }
     );
   }
 
   loginUser(model: any) {
-    this.accountService.login(model).subscribe(() => {
+    this._accountService.login(model).subscribe(() => {
       this._router.navigate(['']);
     });
   }

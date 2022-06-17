@@ -8,23 +8,23 @@ import { Data } from '../_interface/data.model';
 })
 export class DataService {
   baseUrl = environment.apiUrl;
-  constructor(private http: HttpClient) {}
+  constructor(private _http: HttpClient) {}
 
   addData(model: any) {
-    this.http.post(this.baseUrl + 'Employee', model).subscribe();
+    return this._http.post(this.baseUrl + 'Employee', model);
   }
 
   getData() {
-    return this.http.get<Data>(this.baseUrl + 'Employee');
+    return this._http.get<Data>(this.baseUrl + 'Employee');
   }
   getEmpDetail(id: number) {
-    return this.http.get<Data>(this.baseUrl + 'Employee/edit/' + id);
+    return this._http.get<Data>(this.baseUrl + 'Employee/edit/' + id);
   }
 
   updateData(model: any) {
-    this.http.put(this.baseUrl + 'Employee', model).subscribe();
+    return this._http.put(this.baseUrl + 'Employee', model);
   }
   deleteData(id: number) {
-    this.http.delete(this.baseUrl + 'Employee/' + id).subscribe();
+    this._http.delete(this.baseUrl + 'Employee/' + id).subscribe();
   }
 }

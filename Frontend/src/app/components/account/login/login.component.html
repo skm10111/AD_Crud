@@ -4,7 +4,7 @@
     <hr />
     <form [formGroup]="loginForm" class="example-form" (ngSubmit)="login()">
       <mat-form-field class="example-full-width">
-        <mat-label>UserName</mat-label>
+        <mat-label>Username</mat-label>
         <input type="text" matInput formControlName="username" />
       </mat-form-field>
       <ng-container
@@ -18,7 +18,15 @@
 
       <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
-        <input type="password" matInput formControlName="password" />
+
+        <input
+          [type]="isPasswordVisible ? 'text' : 'password'"
+          matInput
+          formControlName="password"
+        />
+        <mat-icon matSuffix (click)="onChangeVisible()"
+          >{{ isPasswordVisible ? "visibility" : "visibility_off" }}
+        </mat-icon>
       </mat-form-field>
       <ng-container
         *ngIf="

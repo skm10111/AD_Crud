@@ -1,0 +1,18 @@
+.main {
+  width: 30%;
+  margin-left: 35%;
+  margin-top: 25%;
+}
+.errorText {
+  font-size: 300%;
+  margin-left: 30%;
+  margin-bottom: 4%;
+}
+.errorDetail {
+  margin-left: 13%;
+  font-size: 150%;
+  margin-bottom: 4%;
+}
+button {
+  margin-left: 23%;
+}

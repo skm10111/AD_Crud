@@ -2,3 +2,9 @@
   justify-content: center;
   align-items: center;
 }
+mat-progress-spinner {
+  margin-top: -172%;
+}
+:host ::ng-deep .custom-spinner circle {
+  stroke: #000000;
+}
